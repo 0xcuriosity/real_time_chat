@@ -17,13 +17,20 @@ roomRouter.get("/chats/:roodId", async (req, res) => {
   });
   return res.status(200).json(messages);
 });
-roomRouter.get("/chats/:slug", async (req, res) => {
-  const slug = req.params.slug;
-  const room = await prismaClient.room.findUnique({
-    where: {
-      slug: slug,
-    },
-  });
-  return res.status(200).json(room);
+roomRouter.get("/room/:slug", async (req, res) => {
+  try {
+    const slug = req.params.slug;
+    const room = await prismaClient.room.findUnique({
+      where: {
+        slug: slug,
+      },
+    });
+    return res.status(200).json(room);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      message: "server error",
+    });
+  }
 });
 export default roomRouter;

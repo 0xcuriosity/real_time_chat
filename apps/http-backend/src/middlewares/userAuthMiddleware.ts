@@ -10,8 +10,8 @@ export const userAuthMiddleware = async (
   next: NextFunction
 ) => {
   try {
-    const token = req.headers["authorization"];
-    if (!token) {
+    const token = req.headers.token;
+    if (!token || typeof token !== "string") {
       throw new Error("you are not signed in");
     }
     const decoded = jwt.verify(token, JWT_SECRET);
@@ -23,6 +23,8 @@ export const userAuthMiddleware = async (
     }
   } catch (error) {
     console.log(error);
-    return res.status(500).json(error);
+    return res.status(500).json({
+      message: "server error",
+    });
   }
 };

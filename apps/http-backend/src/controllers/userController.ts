@@ -53,6 +53,7 @@ const handleSignIn = async (req: Request, res: Response) => {
 };
 const handleSignUp = async (req: Request, res: Response) => {
   try {
+    console.log("username");
     // TODO - create a zod schema and use zod validation
     const { username, password, name, avatarUrl } = req.body;
     if (!username || !password || !name) {
@@ -84,6 +85,7 @@ const handleSignUp = async (req: Request, res: Response) => {
     });
     return res.status(200).json({
       message: "signup successfull",
+      createdUser,
     });
   } catch (error) {
     console.log(error);
