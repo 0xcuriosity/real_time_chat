@@ -66,6 +66,9 @@ importers:
       '@types/axios':
         specifier: ^0.14.4
         version: 0.14.4
+      '@types/ws':
+        specifier: ^8.18.1
+        version: 8.18.1
       axios:
         specifier: ^1.11.0
         version: 1.11.0
@@ -78,6 +81,9 @@ importers:
       react-dom:
         specifier: ^19.1.0
         version: 19.1.0(react@19.1.0)
+      ws:
+        specifier: ^8.18.3
+        version: 8.18.3
     devDependencies:
       '@repo/eslint-config':
         specifier: workspace:*
