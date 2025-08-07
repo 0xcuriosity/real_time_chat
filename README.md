@@ -10,18 +10,6 @@ A real-time chat application built from scratch to explore WebSocket technology 
 
 ### Sign In
 
-# Chatflow 💬
-
-A real-time chat application built from scratch to explore WebSocket technology and Turborepo monorepo workflows. Chatflow allows users to create rooms and engage in seamless real-time conversations.
-
-## 📸 Application Screenshots
-
-### Home Page
-
-![Home Page](./images/home.png)
-
-### Sign In
-
 ![Sign In](./images/signin.png)
 
 ### Dashboard
