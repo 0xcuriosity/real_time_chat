@@ -1,135 +1,276 @@
-# Turborepo starter
+# Chatflow 💬
 
-This Turborepo starter is maintained by the Turborepo core team.
+A real-time chat application built from scratch to explore WebSocket technology and Turborepo monorepo workflows. Chatflow allows users to create rooms and engage in seamless real-time conversations.
 
-## Using this example
+## 📸 Application Screenshots
 
-Run the following command:
+### Home Page
 
-```sh
-npx create-turbo@latest
-```
+![Home Page](./images/home.png)
 
-## What's inside?
+### Sign In
 
-This Turborepo includes the following packages/apps:
+# Chatflow 💬
 
-### Apps and Packages
+A real-time chat application built from scratch to explore WebSocket technology and Turborepo monorepo workflows. Chatflow allows users to create rooms and engage in seamless real-time conversations.
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+## 📸 Application Screenshots
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+### Home Page
 
-### Utilities
+![Home Page](./images/home.png)
 
-This Turborepo has some additional tools already setup for you:
+### Sign In
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+![Sign In](./images/signin.png)
 
-### Build
+### Dashboard
 
-To build all apps and packages, run the following command:
+![Dashboard](./images/dashboard.png)
 
-```
-cd my-turborepo
+### Real-Time Chat
 
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo build
+![Chat Interface](./images/chat.png)
 
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo build
-yarn dlx turbo build
-pnpm exec turbo build
-```
+## 🎯 Project Goals
 
-You can build a specific package by using a [filter](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters):
+This project was built as a learning exercise with two main objectives:
 
-```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo build --filter=docs
+1. **Master WebSocket Technology** - Build a real-time communication system from the ground up using the `ws` library
+2. **Explore Monorepo Architecture** - Implement and understand Turborepo workflows for managing multiple packages
 
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo build --filter=docs
-yarn exec turbo build --filter=docs
-pnpm exec turbo build --filter=docs
-```
+## ✨ Features
 
-### Develop
+- 🏠 **Room Creation** - Create custom chat rooms for different conversations
+- ⚡ **Real-Time Messaging** - Instant message delivery using WebSockets
+- 👥 **Multi-User Support** - Multiple users can join and chat simultaneously
+- 🔐 **User Authentication** - Secure sign-in system
+- 📱 **Responsive Design** - Works seamlessly across different devices
+- 🎨 **Clean UI** - Intuitive and modern user interface
 
-To develop all apps and packages, run the following command:
+## 🏗️ Architecture
+
+This project uses a **Turborepo monorepo** structure to manage multiple packages efficiently:
 
 ```
-cd my-turborepo
-
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo dev
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo dev
-yarn exec turbo dev
-pnpm exec turbo dev
+chatflow/
+├── apps/
+│   ├── web/          # Frontend application
+│   └── server/       # WebSocket server
+├── packages/
+│   ├── ui/           # Shared UI components
+│   ├── config/       # Shared configurations
+│   └── types/        # Shared TypeScript types
+├── images/           # Application screenshots
+└── turbo.json        # Turborepo configuration
 ```
 
-You can develop a specific package by using a [filter](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters):
+## 🛠️ Tech Stack
 
-```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo dev --filter=web
+- **Next.js** - React framework for frontend
+- **Tailwind CSS** - Utility-first CSS framework
+- **WebSocket (ws)** - Real-time bidirectional communication
+- **Express** - Web framework for Node.js
+- **Node.js** - JavaScript runtime
+- **Turborepo** - Monorepo build system
 
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo dev --filter=web
-yarn exec turbo dev --filter=web
-pnpm exec turbo dev --filter=web
-```
+## 🚀 Getting Started
 
-### Remote Caching
+### Prerequisites
 
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
+- Node.js (v16 or higher)
+- pnpm
 
-Turborepo can use a technique known as [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+### Installation
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
+1. **Clone the repository**
 
-```
-cd my-turborepo
+   ```bash
+   git clone https://github.com/yourusername/chatflow.git
+   cd excalidraw
+   ```
 
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo login
+2. **Start development**
+   ```bash
+   pnpm run dev
+   ```
 
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo login
-yarn exec turbo login
-pnpm exec turbo login
-```
+## 🔧 WebSocket Implementation
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+The application uses the `ws` library to implement WebSocket functionality from scratch:
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+### Server-Side WebSocket Handling
 
-```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo link
+- Connection management and user tracking
+- Room creation and joining logic
+- Message broadcasting to room participants
+- Connection cleanup on disconnect
 
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo link
-yarn exec turbo link
-pnpm exec turbo link
-```
+### Client-Side WebSocket Integration
 
-## Useful Links
+- Establishing and maintaining WebSocket connections
+- Real-time message sending and receiving
+- Connection state management
+- Automatic reconnection handling
 
-Learn more about the power of Turborepo:
+## 📦 Turborepo Benefits
 
-- [Tasks](https://turborepo.com/docs/crafting-your-repository/running-tasks)
-- [Caching](https://turborepo.com/docs/crafting-your-repository/caching)
-- [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching)
-- [Filtering](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters)
-- [Configuration Options](https://turborepo.com/docs/reference/configuration)
-- [CLI Usage](https://turborepo.com/docs/reference/command-line-reference)
+This project leverages Turborepo to achieve:
+
+- **Efficient Builds** - Only rebuild packages that have changed
+- **Parallel Execution** - Run tasks across packages simultaneously
+- **Dependency Management** - Automatic dependency graph resolution
+- **Shared Configuration** - Consistent tooling across all packages
+- **Development Speed** - Hot reloading and fast refresh
+
+## 🎓 Learning Outcomes
+
+Through building Chatflow, I gained hands-on experience with:
+
+### WebSocket Technology
+
+- Understanding the WebSocket protocol and its advantages over HTTP polling
+- Implementing bidirectional real-time communication
+- Managing connection states and error handling
+- Building scalable real-time applications
+
+### Monorepo Management
+
+- Structuring large applications with multiple packages
+- Sharing code and configurations efficiently
+- Managing dependencies across packages
+- Optimizing build and development workflows
+
+## Future Enhancements
+
+- [ ] **Message Persistence** - Store chat history in a database
+- [ ] **File Sharing** - Allow users to share images and documents
+- [ ] **Private Messaging** - Direct messages between users
+- [ ] **Voice/Video Chat** - Integrate WebRTC for audio/video calls
+- [ ] **Mobile App** - React Native implementation
+- [ ] **Message Reactions** - Emoji reactions to messages
+- [ ] **Typing Indicators** - Show when users are typing
+- [ ] **User Profiles** - Customizable user profiles and avatars
+
+---
+
+**Happy Chatting!**
+![Sign In](./images/signin.png)
+
+### Dashboard
+
+![Dashboard](./images/dashboard.png)
+
+### Real-Time Chat
+
+![Chat Interface](./images/chat.png)
+
+## 🎯 Project Goals
+
+This project was built as a learning exercise with two main objectives:
+
+1. **Master WebSocket Technology** - Build a real-time communication system from the ground up using the `ws` library
+2. **Explore Monorepo Architecture** - Implement and understand Turborepo workflows for managing multiple packages
+
+## ✨ Features
+
+- 🏠 **Room Creation** - Create custom chat rooms for different conversations
+- ⚡ **Real-Time Messaging** - Instant message delivery using WebSockets
+- 👥 **Multi-User Support** - Multiple users can join and chat simultaneously
+- 🔐 **User Authentication** - Secure sign-in system
+- 📱 **Responsive Design** - Works seamlessly across different devices
+- 🎨 **Clean UI** - Intuitive and modern user interface
+
+## 🏗️ Architecture
+
+This project uses a **Turborepo monorepo** structure to manage multiple packages efficiently:
+
+## 🛠️ Tech Stack
+
+- **Next.js** - React framework for frontend
+- **Tailwind CSS** - Utility-first CSS framework
+- **WebSocket (ws)** - Real-time bidirectional communication
+- **Express** - Web framework for Node.js
+- **Node.js** - JavaScript runtime
+- **Turborepo** - Monorepo build system
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js (v16 or higher)
+- pnpm
+
+### Installation
+
+1. **Clone the repository**
+
+   ```bash
+   git clone https://github.com/yourusername/chatflow.git
+   cd excalidraw
+   ```
+
+2. **Start development**
+   ```bash
+   pnpm run dev
+   ```
+
+## 🔧 WebSocket Implementation
+
+The application uses the `ws` library to implement WebSocket functionality from scratch:
+
+### Server-Side WebSocket Handling
+
+- Connection management and user tracking
+- Room creation and joining logic
+- Message broadcasting to room participants
+- Connection cleanup on disconnect
+
+### Client-Side WebSocket Integration
+
+- Establishing and maintaining WebSocket connections
+- Real-time message sending and receiving
+- Connection state management
+- Automatic reconnection handling
+
+## 📦 Turborepo Benefits
+
+This project leverages Turborepo to achieve:
+
+- **Efficient Builds** - Only rebuild packages that have changed
+- **Parallel Execution** - Run tasks across packages simultaneously
+- **Dependency Management** - Automatic dependency graph resolution
+- **Shared Configuration** - Consistent tooling across all packages
+- **Development Speed** - Hot reloading and fast refresh
+
+## 🎓 Learning Outcomes
+
+Through building Chatflow, I gained hands-on experience with:
+
+### WebSocket Technology
+
+- Understanding the WebSocket protocol and its advantages over HTTP polling
+- Implementing bidirectional real-time communication
+- Managing connection states and error handling
+- Building scalable real-time applications
+
+### Monorepo Management
+
+- Structuring large applications with multiple packages
+- Sharing code and configurations efficiently
+- Managing dependencies across packages
+- Optimizing build and development workflows
+
+## 🔮 Future Enhancements
+
+- [ ] **File Sharing** - Allow users to share images and documents
+- [ ] **Private Messaging** - Direct messages between users
+- [ ] **Voice/Video Chat** - Integrate WebRTC for audio/video calls
+- [ ] **Mobile App** - React Native implementation
+- [ ] **Message Reactions** - Emoji reactions to messages
+- [ ] **Typing Indicators** - Show when users are typing
+- [ ] **User Profiles** - Customizable user profiles and avatars
+
+---
+
+**Happy Chatting!** 🎉
