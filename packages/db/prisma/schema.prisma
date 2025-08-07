@@ -33,4 +33,5 @@ model Chat {
   room Room @relation(fields: [roomId] , references: [id])
   senderId String
   sender User @relation(fields: [senderId] , references: [id])
+  createdAt DateTime @default(now())
 }

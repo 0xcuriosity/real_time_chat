@@ -4,7 +4,9 @@ import jwt from "jsonwebtoken";
 import { createUserSchema } from "@repo/common/zod";
 import bcrypt from "bcrypt";
 import { prismaClient } from "@repo/db/client";
-
+interface AuthenticatedRequest extends Request {
+  userId?: string;
+}
 const handleSignIn = async (req: Request, res: Response) => {
   try {
     // TODO - create a zod schema and use zod validation
@@ -53,7 +55,7 @@ const handleSignIn = async (req: Request, res: Response) => {
 };
 const handleSignUp = async (req: Request, res: Response) => {
   try {
-    console.log("username");
+    console.log("signup");
     // TODO - create a zod schema and use zod validation
     const { username, password, name, avatarUrl } = req.body;
     if (!username || !password || !name) {
@@ -93,4 +95,28 @@ const handleSignUp = async (req: Request, res: Response) => {
   }
 };
 
-export { handleSignIn, handleSignUp };
+const handleGetUser = async (req: AuthenticatedRequest, res: Response) => {
+  try {
+    console.log("getting user");
+    const userId = req.userId;
+    const foundUser = await prismaClient.user.findUnique({
+      where: {
+        id: userId,
+      },
+    });
+    if (!foundUser) {
+      return res.status(404).json({
+        message:
+          "user with the given userId not found, ideally should not happen as this is a gated endpoint",
+      });
+    }
+    return res.status(200).json(foundUser);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      message: "server error",
+    });
+  }
+};
+
+export { handleSignIn, handleSignUp, handleGetUser };

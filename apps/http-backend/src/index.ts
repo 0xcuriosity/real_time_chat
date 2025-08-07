@@ -9,5 +9,5 @@ app.use(cors());
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/room", userAuthMiddleware, roomRouter);
 app.listen(3001, () => {
-  console.log("object");
+  console.log("listening at port 3001");
 });

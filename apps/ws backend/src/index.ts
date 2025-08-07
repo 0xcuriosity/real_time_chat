@@ -49,9 +49,10 @@ wss.on("connection", function connection(ws, request) {
   ws.on("message", async function mes(data) {
     const parsedData = JSON.parse(data as unknown as string);
     if (parsedData.type === "join_room") {
+      console.log("joining room");
       const user = users.find((x) => x.ws === ws); // get all the users that are connected to this websocket stream
       user?.rooms.push(parsedData.roomId);
-      console.log("user joined room");
+      console.log(`user : ${user?.userId} joined room ${parsedData.roomId}`);
     }
     if (parsedData.type === "leave_room") {
       const user = users.find((x) => x.ws === ws);
@@ -62,6 +63,7 @@ wss.on("connection", function connection(ws, request) {
     }
     if (parsedData.type === "chat") {
       console.log("chat");
+      const sender = users.find((x) => x.ws === ws);
       const roomId = parsedData.roomId;
       const message = parsedData.message as unknown as string;
       await prismaClient.chat.create({
@@ -78,6 +80,7 @@ wss.on("connection", function connection(ws, request) {
               type: "chat",
               message: message,
               roomId,
+              senderId: sender?.userId,
             })
           );
         }
@@ -85,3 +88,5 @@ wss.on("connection", function connection(ws, request) {
     }
   });
 });
+
+// join room using

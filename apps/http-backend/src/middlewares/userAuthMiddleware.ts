@@ -10,6 +10,7 @@ export const userAuthMiddleware = async (
   next: NextFunction
 ) => {
   try {
+    console.log("userAuthMiddleware");
     const token = req.headers.token;
     if (!token || typeof token !== "string") {
       throw new Error("you are not signed in");

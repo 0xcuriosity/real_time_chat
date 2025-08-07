@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { prismaClient } from "@repo/db/client";
+import bcrypt from "bcrypt";
 interface AuthenticatedRequest extends Request {
   userId?: String;
 }
@@ -11,7 +12,8 @@ const handleCreateRoom = async (req: AuthenticatedRequest, res: Response) => {
         message: "enter a unique room name",
       });
     }
-    const adminId = req.userId as string;
+    const adminId = req.userId as unknown as string;
+    console.log(req.userId);
     if (!adminId) {
       // 401 - unauthorized
       return res.status(401).json({
